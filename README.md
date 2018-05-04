@@ -11,5 +11,5 @@ A simple Processing sketch to bridge a serial port to PubNub
 - If you get an error like, "Error opening serial port [...]: Port Busy", it is likely because your Arduino serial port was not found. See the next point:
 - You may need to modify the search param for finding a suitable serial port. Right now this sketch simply searches for the first "usbmodem". If you're using multiple Arduinos / XBees on macOS or Linux, you should change this to be more specific. If you're on Windows, your port will be something like "COM1"
 - If Processing can't find 'PubNub' you may need to re-import the PubNub jar file. To do this,
--- Go to Sketch > Add File...
--- Add the `.jar` file from the "code" folder
+  - Go to Sketch > Add File...
+  - Add the `.jar` file from the "code" folder
