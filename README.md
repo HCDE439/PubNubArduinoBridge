@@ -1,5 +1,5 @@
-# PubNub Arduino Bridge
-A simple Processing sketch to bridge a serial port to PubNub
+# PubNub Bridge
+A simple Processing sketch to bridge an Arduino serial port to PubNub
 
 ## Installation
 - Download a ZIP of this project
