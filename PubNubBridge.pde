@@ -7,7 +7,6 @@
 String publish_key = "pub-c-2725239f-4145-4fef-81e3-ayylmao";
 String subscribe_key = "sub-c-f6e9a4fc-1d08-11e8-84be-ayylmao";
 String channel = "Default";             // PubNub channel
-String serialSearchParam = "usbmodem";  // Used to find a suitable serial port (adjust as needed)
  
 import processing.serial.*;
 import java.util.Date;
@@ -17,16 +16,6 @@ Serial port;
 PubNub pubnub;
 
 char[] buffer;
-
-String getPossibleArduinoSerial() {
-  String[] serialList = Serial.list();
-  
-  for (int idx = 0; idx < serialList.length; idx ++) {
-    String serial = serialList[idx];
-    if (serial.contains(serialSearchParam)) { return serial; }
-  }
-  return serialList[0];
-}
 
 String timestampToString(long timestamp) {
     SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy hh:mm:ss a");
@@ -97,9 +86,9 @@ void setup() {
     channels.add(channel);
     pubnub.subscribe().channels(channels).execute();
    
-    // Setup Arduino port
-    String portName = getPossibleArduinoSerial();
-    port = new Serial(this, portName, 9600);
+    // Setup Arduino
+    printArray(Serial.list()); // List all the available serial ports
+    port = new Serial(this, Serial.list()[4], 9600); // Open the port you are using at the rate you want
     
     // Everything else
     buffer = new char[0];
